@@ -21,7 +21,7 @@ insert into albums(album_id, album_name, realese_date, artist_id) values(1, 'cra
 insert into albums(album_id, album_name, realese_date, artist_id) values(2, 'Hot chilli peppers', '2015-10-09', 2);
 
 CREATE TABLE `song_tracks` (
-    `id` INT(11) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id` INT(11) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`song_title` varchar(255) NOT NULL,
 	`genre` varchar(255) NOT NULL,
 	`artist_id` INT(11) NOT NULL,
