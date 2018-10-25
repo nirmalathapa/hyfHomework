@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'
 
-const todoItems = [
+const todoItemsCollection = [
   {
     item: "Get out of bed", 
     date: new Date(2017, 8, 13).toDateString()
@@ -32,8 +32,8 @@ class List extends React.Component{
   render(){    
     return(
       <div className="list">
-         { todoItems.map((el) => {
-              return <Item todo={`${el.item}, `} date={el.date}/>
+         { todoItemsCollection.map((el) => {
+              return <Item todoItem={`${el.todoItem},`} date={el.date}/>
           })}
       </div>
     );
@@ -44,7 +44,7 @@ class Item extends React.Component{
   render(){
     return(
       <div>
-        <li>{this.props.todo}{this.props.date}</li>
+        <li>{this.props.todoItem}{this.props.date}</li>
       </div>
     );
   }
