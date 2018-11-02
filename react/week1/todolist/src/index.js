@@ -3,12 +3,12 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import TodoList from "./todo/TodoList";
 
-const todoList =[
+const todoList = [
   {
     id: 1,
     todo: "Get out of bed,",
     finishDate: " Wed Sep 13 2017",
-    done: false,
+    done: false
   },
   {
     id: 2,
@@ -22,22 +22,28 @@ const todoList =[
     finishDate: " Fri Sep 15 2017",
     done: false
   }
-]
-
+];
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = {
-      done: todoList.done,
-    }
+    console.log({todoList});
+    this.state = {todoList:  todoList}
   }
- render() {
+
+  handleToggle = (id) => {
+    const foundIndex = this.state.todoList.findIndex(item => item.id === id)
+    const newTodoList = [...this.state.todoList]
+    newTodoList[foundIndex].done = !newTodoList[foundIndex].done
+    this.setState({todoList: newTodoList})
+  }
+
+  render() {
     return (
       <div className="container">
-        <h1>todolist</h1>                
-        <TodoList todoList={todoList} isDone={this.state.done} />
-      </div>  
+        <h1>todolist</h1>
+        <TodoList todoList={this.state.todoList} onToggle={this.handleToggle} />
+      </div>
     );
   }
 }
