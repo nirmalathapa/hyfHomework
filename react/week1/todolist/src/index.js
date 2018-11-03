@@ -3,47 +3,79 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import TodoList from "./todo/TodoList";
 
+const todoList = [
+  {
+    id: 1,
+    todo: "Get out of bed,",
+    finishDate: " Wed Sep 13 2017",
+    done: false
+  },
+  {
+    id: 2,
+    todo: "Brush teeth,",
+    finishDate: " Thu Sep 14 2017",
+    done: false
+  },
+  {
+    id: 3,
+    todo: "Eat breakfast,",
+    finishDate: " Fri Sep 15 2017",
+    done: false
+  }
+];
+
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      todoList:[
-        {
-          id: 1,
-          todo: "Get out of bed,",
-          finishDate: " Wed Sep 13 2017",
-          done: false,
-        },
-        {
-          id: 2,
-          todo: "Brush teeth,",
-          finishDate: " Thu Sep 14 2017",
-          done: false
-        },
-        {
-          id: 3,
-          todo: "Eat breakfast,",
-          finishDate: " Fri Sep 15 2017",
-          done: false
-        }
-      ]
-     };
+    this.state = { todoList: todoList, value: '' };
   }
 
-  handleChnage(e){
-    const check = this.state.done
-    this.setState({
-      [check]: "adf"
-    })
+  handleToggle = (id) => {
+    const foundIndex = this.state.todoList.findIndex(item => item.id === id);
+    const newTodoList = [...this.state.todoList];
+    newTodoList[foundIndex].done = !newTodoList[foundIndex].done;
+    this.setState({ todoList: newTodoList });
+  };
+
+  handleDelete = id => {
+    const index = this.state.todoList.findIndex(item => item.id === id);
+    const newTodoList = [...this.state.todoList];
+    newTodoList.splice(index, 1);
+    this.setState({ todoList: newTodoList });
+  };
+
+  handleChangeValue = (e) => {
+    this.setState({value: e.target.value});
   }
-  
- render() {
-    const { todoList } = this.state;
+
+  handleAddTodo = () => {
+    const arr = this.state.todoList;
+    if(this.state.value === ""){
+      return;
+    }
+    arr.push({id:Math.random(1), todo:this.state.value});    
+    this.setState({todoList: arr})
+    console.log(arr);    
+  }
+  render() {
     return (
       <div className="container">
-        <h1>todolist</h1>        
-        <TodoList todoList={todoList} />
-      </div>  
+        <h1>todolist</h1>
+        <div className="top">
+          <input className="writeTodo" type="text" onChange={this.handleChangeValue} value={this.state.value}/>          
+          <button className="addButton" onClick={this.handleAddTodo} >Add todo</button>
+        </div>
+        {this.state.todoList.length === 0 ? (
+          "No todos left"
+        ) : (
+          <TodoList
+            todoList={this.state.todoList}
+            onToggle={this.handleToggle}
+            onDelete={this.handleDelete}
+            onAdd={this.handleAddTodo}
+          />
+        )}
+      </div>
     );
   }
 }
