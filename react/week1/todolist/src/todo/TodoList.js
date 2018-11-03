@@ -7,6 +7,7 @@ class TodoList extends React.Component {
   }
   render() {
     return (
+      <div className="bottom">
         <ul>
           {this.props.todoList.map(todo => {
             return (
@@ -22,6 +23,7 @@ class TodoList extends React.Component {
             );
           })}
         </ul>
+        </div>  
     );
   }
 }

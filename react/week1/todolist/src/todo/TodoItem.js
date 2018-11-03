@@ -26,7 +26,7 @@ class TodoItem extends React.Component {
         <span className={this.props.done === true ? "done" : "not-done"}>
           {this.props.todo} {this.props.finishDate}
         </span>
-        <button onClick={this.handleDelete}>X</button>
+        <button className="delete" onClick={this.handleDelete}>X</button>
       </li>
     );
   }
