@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem";
 
 class TodoList extends React.Component {
 
-  handleChangeValue(e) {
+  handleChangeValue() {
   }
   render() {
     return (
