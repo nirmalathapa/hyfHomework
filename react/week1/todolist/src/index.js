@@ -27,14 +27,14 @@ const todoList = [
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { todoList: todoList, value: '' };
+    this.state = { todoList: todoList, value: "" };
   }
 
-  handleToggle = (id) => {
+  handleToggle = id => {
     const foundIndex = this.state.todoList.findIndex(item => item.id === id);
     const newTodoList = [...this.state.todoList];
     newTodoList[foundIndex].done = !newTodoList[foundIndex].done;
-    this.setState({ todoList: newTodoList,  value: ''});
+    this.setState({ todoList: newTodoList, value: "" });
   };
 
   handleDelete = id => {
@@ -44,24 +44,34 @@ class App extends React.Component {
     this.setState({ todoList: newTodoList });
   };
 
-  handleChangeValue = (e) => {
-      this.setState({value: e.target.value});
-  }
+  handleChangeValue = e => {
+    this.setState({ value: e.target.value });
+  };
 
-  handleAddTodo = (e) => {
+  handleAddTodo = e => {
     e.preventDefault();
     const arr = this.state.todoList;
-    arr.push({id:Math.random(1), todo:this.state.value});    
-    this.setState({todoList: arr,  value: ''})
-    
-  }
+    arr.push({ id: Math.random(1), todo: this.state.value });
+    this.setState({ todoList: arr, value: "" });
+  };
   render() {
     return (
       <div className="container">
         <h1>todolist</h1>
         <div className="top">
-          <input className="writeTodo" type="text" onChange={this.handleChangeValue} value={this.state.value} />          
-          <button className="addButton" onClick={this.handleAddTodo} disabled={!this.state.value}>Add todo</button>
+          <input
+            className="writeTodo"
+            type="text"
+            onChange={this.handleChangeValue}
+            value={this.state.value}
+          />
+          <button
+            className="addButton"
+            onClick={this.handleAddTodo}
+            disabled={!this.state.value}
+          >
+            Add todo
+          </button>
         </div>
         {this.state.todoList.length === 0 ? (
           "No todos left"
@@ -77,7 +87,5 @@ class App extends React.Component {
     );
   }
 }
-
-
 
 ReactDOM.render(<App />, document.getElementById("root"));
