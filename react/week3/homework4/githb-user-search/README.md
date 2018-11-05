@@ -1,44 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Homework Week 4
 
-## Available Scripts
+Base your week 4 homework on what was thought in tne week 4 class .
 
-In the project directory, you can run:
+When you are done, create a new PR for week 4.
 
-### `npm start`
+## Outline
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+your home work will be serching github users based on the what you type in the input:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```
+Github Users
 
-### `npm test`
+type something: [           ]   [Search]
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* User 1
+* User 2
+* User 3
+```
 
-### `npm run build`
+When the search is loading, you should show "loading..."
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+When the search is failed, you should show "error fetching (reason why it failed)..."
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+When the search result is empty (no users), you should show "No users...":
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Continue using the github API through this url - https://api.github.com/ - (Hint: use postman to query the github API)
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- By querying the above url you will view all the api urls that the github API has. You can try to explore them, we recommend that you read the github API documentation. (https://developer.github.com/v3/#current-version)
+    - You can try to retrieve the repos data from the HackYourFuture-CPH organisation - (Hint: https://api.github.com/users/.../repos)
+    - You can try to display the name of all the repos in your React app
+    - If this is to easy for you... surprise us with your creativity... build up on your project and we will have a look!! ;)
