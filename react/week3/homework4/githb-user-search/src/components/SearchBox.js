@@ -5,7 +5,8 @@ class SearchBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: "",
+      error: ""
     };
   }
 
@@ -21,9 +22,13 @@ class SearchBox extends React.Component {
   };
 
   handleClick = () => {
-    this.props.handleSearch(this.state.value);
+    if(this.state.value === ""){
+       return this.setState({error: "Please enter the user"});
+    }else{this.setState({error: ""})}
+    this.props.handleSearch(this.state.value);        
   };
   render() {
+    
     return (
       <div>
         <input
@@ -35,6 +40,7 @@ class SearchBox extends React.Component {
         <button type="submit" onClick={this.handleClick}>
           Search
         </button>
+        <p>{this.state.error}</p>
       </div>
     );
   }
