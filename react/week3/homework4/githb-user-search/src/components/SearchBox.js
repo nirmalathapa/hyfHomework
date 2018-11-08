@@ -23,7 +23,7 @@ class SearchBox extends React.Component {
 
   handleClick = () => {
     if (this.state.value === "") {
-      return this.setState({ error: "Please enter the user" });
+      return this.setState({ error: "No Users" });
     } else {
       this.setState({ value: "", error: "" });
     }
