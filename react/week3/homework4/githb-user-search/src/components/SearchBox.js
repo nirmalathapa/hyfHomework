@@ -11,9 +11,9 @@ class SearchBox extends React.Component {
   }
 
   handleChange = e => {
-      this.setState({
-        value: e.target.value
-      });
+    this.setState({
+      value: e.target.value
+    });
   };
   handleKeyPress = e => {
     if (e.key === "Enter") {
@@ -22,13 +22,14 @@ class SearchBox extends React.Component {
   };
 
   handleClick = () => {
-    if(this.state.value === ""){
-       return this.setState({error: "Please enter the user"});
-    }else{this.setState({error: ""})}
-    this.props.handleSearch(this.state.value);        
+    if (this.state.value === "") {
+      return this.setState({ error: "Please enter the user" });
+    } else {
+      this.setState({ value: "", error: "" });
+    }
+    this.props.handleSearch(this.state.value);
   };
   render() {
-    
     return (
       <div>
         <input
