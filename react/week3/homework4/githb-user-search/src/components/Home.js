@@ -2,6 +2,7 @@ import React from "react";
 import SearchField from "./SearchField";
 import UserList from "./UserList";
 import { getGithubUser } from "./api";
+import Navigation from "./Navigation";
 
 class Home extends React.Component {
   constructor(props) {
@@ -33,20 +34,23 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row justify-content-md-center">
-          <div className="col-12 col-md-10 col-lg-12 col-xl-8 mt-5">
-            <div>
-              <SearchField
-                inputVal={this.state.searchQuery}
-                onHandleChange={this.handleChange}
-                onHandleClick={this.handleClick}
-              />
-              <UserList
-                users={this.state.users}
-                error={this.state.error}
-                loading={this.state.loading}
-              />
+      <div>
+        <Navigation />
+        <div className="container-fluid">
+          <div className="row justify-content-md-center">
+            <div className="col-12 col-md-10 col-lg-12 col-xl-8 mt-5">
+              <div>
+                <SearchField
+                  inputVal={this.state.searchQuery}
+                  onHandleChange={this.handleChange}
+                  onHandleClick={this.handleClick}
+                />
+                <UserList
+                  users={this.state.users}
+                  error={this.state.error}
+                  loading={this.state.loading}
+                />
+              </div>
             </div>
           </div>
         </div>
