@@ -1,5 +1,6 @@
 import React from "react";
 import { getSingleGithubUser } from "./api";
+import { Link } from "react-router-dom";
 
 class GithubProfile extends React.Component {
   constructor(props) {
@@ -26,9 +27,12 @@ class GithubProfile extends React.Component {
           <img className="card-img-top" src={this.state.user.avatar_url} alt="profile avatar"/>
           <div className="card-body">
             <h3>{this.state.user.name}</h3>
+            <span>Location: {this.state.user.location}</span>
             <h4>Followers: {this.state.user.followers}</h4>
             <span>Repos: {this.state.user.public_repos}</span>
-            
+            <Link to="/">
+              <p>Go Back</p>
+            </Link>
           </div>
         </div>
       </div>
